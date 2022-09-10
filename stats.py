@@ -25,7 +25,7 @@ class Stats:
     def between(self, min_value, max_value):
         """
         Accepts two input values and check all between values added in values list.
-        Include minimum and maximun value.
+        Include min and max value.
         :param min_value: minimum value to evaluate.
         :param max_value: maximum value to evaluate.
         :return: between values.
