@@ -14,13 +14,10 @@ class Stats:
         :param value: value to evaluate.
         :return: less values.
         """
-        try:
+        if value not in self.values_added:
+            raise ValueError('The entered value has not been added before.')
+        else:
             return self.values_stats[value]['left']
-        except Exception as e:
-            if value not in self.values_added:
-                print('Input value was not be added before.')
-            else:
-                print(f'Exception found on less method: {e}')
 
     def between(self, min_value, max_value):
         """
@@ -30,15 +27,12 @@ class Stats:
         :param max_value: maximum value to evaluate.
         :return: between values.
         """
-        try:
+        if min_value not in self.values_added or max_value not in self.values_added:
+            raise ValueError('The entered values have not been added before.')
+        else:
             return len(self.values_added) - \
                    self.values_stats[min_value]['left'] - \
                    self.values_stats[max_value]['right']
-        except Exception as e:
-            if min_value or max_value not in self.values_added:
-                print('Some of values were not be added before.')
-            else:
-                print(f'Exception found on between method: {e}')
 
     def greater(self, value):
         """
@@ -46,10 +40,7 @@ class Stats:
         :param value: value to evaluate.
         :return: greater values.
         """
-        try:
+        if value not in self.values_added:
+            raise ValueError('The entered value has not been added before.')
+        else:
             return self.values_stats[value]['right']
-        except Exception as e:
-            if value not in self.values_added:
-                print('Input value was not be added before.')
-            else:
-                print(f'Exception found on between method: {e}')
