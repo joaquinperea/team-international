@@ -25,7 +25,12 @@ class DataCapture:
         through the "stats" object.
         :return: Stats object.
         """
-        self.values_added.sort()
+        # Sorting list without using sort() method:
+        for i in range(len(self.values_added)):
+            for j in range(i + 1, len(self.values_added)):
+                if self.values_added[i] > self.values_added[j]:
+                    self.values_added[i], self.values_added[j] = self.values_added[j], self.values_added[i]
+        # Iterate an generate a dict with stats:
         for i, elem in enumerate(self.values_added):
             if elem not in self.values_stats:
                 self.values_stats[elem] = {
